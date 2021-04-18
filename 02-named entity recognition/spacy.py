@@ -29,8 +29,18 @@ document = nlp(article)
 print('Original Sentence: %s' % (article))
 
 for element in document.ents:
-    print('Type: %s, Value: %s' % (element.label_, element))
+    print(element.text + ' - ' + element.label_ + ' - ' + str(spacy.explain(element.label_)))
     
+    
+    
+from spacy import displacy
+sp = spacy.load('en_core_web_sm')
+
+sen = sp(u'Manchester United is looking to sign Harry Kane for $90 million. David demand 100 Million Dollars')
+displacy.render(sen, style='ent', jupyter=True)    
+displacy.serve(sen, style='ent')
+
+###############################################################################
 ###############################################################################
 
 
